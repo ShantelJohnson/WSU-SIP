@@ -34,32 +34,23 @@ By the end of this week, students will be able to:
   - Iteratively improve for better results
   - Handle common issues and errors
 
-### Part 3: Hands-On Development Session (45 minutes)
-- **Building a Simple AWS Application**
-  - Create Lambda function with DynamoDB integration
-  - Generate CloudFormation template
-  - Build basic web interface
-- **Best Practices**
-  - Review generated code before using
-  - Test incrementally
-  - Ask for explanations when unclear
+### Part 3: Q Developer Setup and Exploration (30 minutes)
+- **Setup and Configuration**
+  - Install Q Developer in preferred environment
+  - Complete authentication setup
+  - Test basic code generation capabilities
+  - Explore different prompt styles
 
 ## Self-Paced Learning (2-3 hours)
 
 ### Required Labs
-1. **Q Developer Setup and Exploration** (30 minutes)
-   - Install Q Developer in preferred environment
-   - Complete authentication setup
-   - Test basic code generation capabilities
-   - Explore different prompt styles
-
-2. **Prompt Engineering Practice** (60 minutes)
+1. **Prompt Engineering Practice** (60 minutes)
    - Use prompts from the AI prompts package
    - Generate code for each core AWS service
    - Practice refining prompts for better results
    - Document what works and what doesn't
 
-3. **Mini-Project: Student Directory** (90 minutes)
+2. **Mini-Project: Student Directory** (2 hours)
    - **Goal**: Build complete student lookup system
    - **Components**:
      - DynamoDB table for student data
