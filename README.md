@@ -4,10 +4,9 @@ This repository contains the complete AWS Student Innovation Program designed fo
 
 ## 📋 Quick Navigation for Reviewers
 
-- **[Project Portfolio (HTML Version)](./AWS%20Student%20Innovation%20Program%20-%20Project%20Portfolio.html)** - Complete project descriptions with technical details
+- **[Project Portfolio](./AWS-Student-Innovation-Program-Project-Portfolio.md)** - Complete project descriptions with technical details
 - **[4-Week Onboarding Curriculum](./onboarding-curriculum/)** - AWS crash course for students
 - **[AI Prompts Package](./ai-prompts/)** - Sample prompts to accelerate student development
-- **[Project Analysis](./project-analysis/)** - Feasibility assessment and timeline validation
 
 ---
 
