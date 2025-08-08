@@ -34,7 +34,7 @@ By the end of this week, students will be able to:
   - Iteratively improve for better results
   - Handle common issues and errors
 
-### Part 3: Q Developer Setup and Exploration (30 minutes)
+### Part 3: Q Developer Setup and Exploration (45 minutes)
 - **Setup and Configuration**
   - Install Q Developer in preferred environment
   - Complete authentication setup
