@@ -114,7 +114,7 @@ WSU-SIP-package/
 - 2 hours instructor-led sessions
 - 2-3 hours self-paced learning
 
-**Project Phase**: 3-5 hours per week for 5 weeks
+**Project Phase**: 10 hours per week for 5 weeks
 - Flexible team-based work
 - AI assistance to accelerate development
 - Choose implementation options based on progress
