@@ -20,4 +20,4 @@ By the end of this program, students will be able to:
 
 ### Delivery Format
 - **2 hours per week** of instructor-led sessions
-- **2-3 hours of self-paced reading/videos/labs** (per week)
+- **3-4 hours of self-paced reading/videos/labs** (per week)
