@@ -10,60 +10,33 @@ By the end of this week, students will be able to:
 
 ## Instructor-Led Session (2 hours)
 
-### Part 1: Introduction to Q Developer (30 minutes)
+### Part 1: Q Developer Intro (20 minutes)
 - **What is Amazon Q Developer?**
-  - AI coding assistant vs. general AI chatbot
-  - Integration with IDEs and AWS Console
-  - Capabilities: code generation, explanation, debugging
-- **Setup and Configuration**
-  - Installing Q Developer extension
-  - Authentication and permissions
-  - Console vs. IDE usage
+- **AI coding assistant capabilities**
+- **Integration with IDEs and AWS Console**
 
-### Part 2: Prompt Engineering for Code (45 minutes)
-- **Effective Prompt Structure**
-  - Be specific about context and requirements
-  - Include programming language and frameworks
-  - Specify input/output formats
-- **AWS-Specific Prompting**
-  - Mention AWS services by name
-  - Include IAM and security considerations
-  - Request error handling and logging
-- **Live Demo: Prompt Refinement**
-  - Start with basic prompt
-  - Iteratively improve for better results
-  - Handle common issues and errors
+### Part 2: Prompt Engineering for Code (30 minutes)
+- **Effective prompt structure**
+- **AWS-specific prompting techniques**
+- **Iterative prompt refinement**
 
-### Part 3: Q Developer Setup and Exploration (45 minutes)
-- **Setup and Configuration**
-  - Install Q Developer in preferred environment
-  - Complete authentication setup
-  - Test basic code generation capabilities
-  - Explore different prompt styles
+### Break (10 minutes)
 
-## Self-Paced Learning (2-3 hours)
+### Part 3: Q Developer Setup & Exploration (40 minutes)
+- **Installation and configuration**
+- **Authentication setup**
+- **Hands-on exploration of capabilities**
 
-### Required Labs
-1. **Prompt Engineering Practice** (60 minutes)
-   - Use prompts from the AI prompts package
-   - Generate code for each core AWS service
-   - Practice refining prompts for better results
-   - Document what works and what doesn't
+### Part 4: Assignment Review (20 minutes)
+- **Review self-paced learning assignment**
+- **Q&A**
 
-2. **Mini-Project: Student Directory** (2 hours)
-   - **Goal**: Build complete student lookup system
-   - **Components**:
-     - DynamoDB table for student data
-     - Lambda function for search API
-     - Simple HTML interface
-     - CloudFormation for deployment
-   - **Process**: Use Q Developer for all code generation
-   - **Deliverable**: Working application deployed in AWS
+## Self-Paced Learning
 
-### Reading/Videos
-- Q Developer User Guide
-- Prompt Engineering Best Practices
-- Review AI prompts package from project materials
+### Required Activities
+- **Setup Budget Alerts for your AWS account (20 minutes):** https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html 
+- **Q Developer - Accelerate Building Lambda Functions:** https://catalog.us-east-1.prod.workshops.aws/workshops/2c7b3627-a1f8-4310-8e5b-211b306d10d9/en-US/lab5 
+- **Build a "simple" web app**
 
 ## Mini-Project Specifications
 

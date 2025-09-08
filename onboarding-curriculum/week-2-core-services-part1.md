@@ -9,71 +9,40 @@ By the end of this week, students will be able to:
 
 ## Instructor-Led Session (2 hours)
 
-### Part 1: Identity and Access Management (IAM) (40 minutes)
-- **Why IAM Matters**
-  - Security best practices and least privilege principle
-  - Root account vs. IAM users
-- **Core IAM Concepts**
-  - Users, groups, roles, and policies
-  - Authentication vs. authorization
-- **Hands-on Demo**
-  - Create IAM user with console access
-  - Attach policies and test permissions
-  - Create service role for Lambda
+### Part 1: IAM (20 minutes)
+- **Identity and Access Management fundamentals**
+- **Users, roles, and policies**
+- **AWS Security Best Practices**
+  - Shared Responsibility Model
+  - Principal of least privilege
 
-### Part 2: Simple Storage Service (S3) (40 minutes)
-- **S3 Fundamentals**
-  - Buckets, objects, and keys
-  - Storage classes and pricing
-  - Security and access control
-- **Common Use Cases**
-  - Static website hosting
-  - Data backup and archival
-  - Application data storage
-- **Hands-on Demo**
-  - Create S3 bucket
-  - Upload files and set permissions
-  - Enable static website hosting
+### Part 2: S3 (30 minutes)
+- **Simple Storage Service fundamentals**
+- **Buckets, objects, and security**
+- **Common use cases**
 
-### Part 3: AWS Lambda (40 minutes)
-- **Serverless Computing Concepts**
-  - Event-driven architecture
-  - Pay-per-execution model
-  - Automatic scaling
-- **Lambda Fundamentals**
-  - Function structure and runtime
-  - Triggers and event sources
-  - Environment variables and configuration
-- **Hands-on Demo**
-  - Create simple "Hello World" Lambda function
-  - Test function in console
-  - View logs in CloudWatch
+### Break (10 minutes)
 
-## Self-Paced Learning (2-3 hours)
+### Part 3: Lambda (20 minutes)
+- **Serverless computing concepts**
+- **Function structure and triggers**
+- **Event-driven architecture**
+
+### Part 4: Workshop Studio (20 minutes)
+- **Setup Workshop Studio accounts**
+- **Environment configuration**
+
+### Part 5: Assignment Review (20 minutes)
+- **Review self-paced learning assignment**
+- **The labs will use the Workshop studio accounts we setup in Part 4**
+
+## Self-Paced Learning
 
 ### Required Labs
-1. **IAM Security Lab** (45 minutes)
-   - Create IAM user for yourself
-   - Set up MFA
-   - Create custom policy for S3 access
-   - Test permissions
-
-2. **S3 Storage Lab** (60 minutes)
-   - Create bucket with versioning enabled
-   - Upload different file types
-   - Configure bucket for static website
-   - Set up bucket policies
-
-3. **Lambda Function Lab** (75 minutes)
-   - Build Lambda function that processes S3 events
-   - Configure S3 trigger
-   - Test end-to-end workflow
-   - Review CloudWatch logs
-
-### Reading/Videos
-- AWS IAM Best Practices documentation
-- S3 User Guide (Getting Started section)
-- Lambda Developer Guide (Getting Started)
+- **S3 Hands-On Lab:** https://catalog.workshops.aws/general-immersionday/en-US/basic-modules/60-s3/s3 
+- **IAM Roles:** https://catalog.workshops.aws/iam-immersionday/en-US/basic-modules/20-identities-and-access-management/3-roles 
+  - **Including Optional IAM Service Roles:** https://catalog.workshops.aws/iam-immersionday/en-US/basic-modules/20-identities-and-access-management/3-roles/2-sr-lab 
+- **Skillbuilder - AWS Lambda Getting Started:** https://skillbuilder.aws/learn/S6YE1Z74TX/aws-lambda-getting-started/D5XQ4GCZXR
 
 ## Integration Example
 **Simple File Processing Pipeline:**

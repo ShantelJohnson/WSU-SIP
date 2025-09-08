@@ -4,61 +4,36 @@
 By the end of this week, students will be able to:
 - Define cloud computing and explain its key benefits
 - Identify the main AWS service categories
-- Navigate the AWS Management Console
+- Recognize the AWS Management Console
 - Understand AWS pricing models and the Free Tier
-- Create and manage basic AWS account security
 
 ## Instructor-Led Session (2 hours)
 
-### Part 1: What is Cloud Computing? (45 minutes)
-- **Traditional IT vs. Cloud Computing**
-  - On-premises infrastructure challenges
-  - Cloud computing definition and characteristics
-  - Benefits: scalability, cost-effectiveness, reliability
-- **Cloud Service Models**
-  - Infrastructure as a Service (IaaS)
-  - Platform as a Service (PaaS)
-  - Software as a Service (SaaS)
-- **Cloud Deployment Models**
-  - Public, private, hybrid clouds
+### Part 1: What is the WSU Student Innovation Program (40 minutes)
+- **Purpose of the program**
+- **Goals by the end of the semester**
+- **Structure of the program**
 
 ### Break (10 minutes)
 
-### Part 2: Introduction to AWS (65 minutes)
-- **What is Amazon Web Services?**
-  - AWS history and market position
-  - Global infrastructure (regions, availability zones)
-  - AWS service categories overview
-- **AWS Management Console Tour**
-  - Console navigation and layout
-  - Service search and favorites
-  - Account settings and billing dashboard
-- **AWS Free Tier**
-  - Free tier limits and duration
-  - Monitoring usage and avoiding charges
-  - Best practices for cost management
+### Part 2: What is Cloud Computing and AWS (40 minutes)
+- **Cloud computing definition**
+- **Cloud service models**
+- **What is Amazon Web Services**
+- **Famous solutions built on AWS**
+- **Management Console Tour**
 
-## Self-Paced Learning (2-3 hours)
+### Part 3: Assignment Review (30 minutes)
+- **Review the self-paced learning assignment**
+- **Q&A**
 
-### Required Activities
-1. **AWS Account Setup** (30 minutes)
-   - Create AWS Free Tier account
-   - Set up billing alerts
-   - Enable MFA on root account
+## Self-Paced Learning (90-120 minutes)
 
-2. **AWS Console Exploration** (60 minutes)
-   - Complete AWS Console tutorial
-   - Explore different service categories
-   - Practice navigating between services
-
-3. **Reading/Videos** (60-90 minutes)
-   - AWS Cloud Practitioner Essentials (Module 1-2)
-   - "What is Cloud Computing?" AWS whitepaper (first 10 pages)
-   - AWS Global Infrastructure overview video
-
-### Optional Enrichment
-- AWS Cloud Practitioner sample questions (cloud fundamentals section)
-- Explore AWS customer case studies
+### Reading/Videos
+- **What is cloud computing?** https://aws.amazon.com/what-is-cloud-computing/
+- **Cloud Computing:** https://www.gartner.com/en/infrastructure-and-it-operations-leaders/topics/cloud-computing 
+- **Skillbuilder - Cloud Essentials for Business Leaders:** https://skillbuilder.aws/learn/TD9MJF2BJP/cloud-essentials-for-business-leaders--education/2HBPQWSFJX
+- **Skillbuilder - Job roles in the Cloud:** https://skillbuilder.aws/learn/VTPP3S2SG8/job-roles-in-the-cloud/DEMT7MTJ7W
 
 ## Key Takeaways
 - Cloud computing provides on-demand access to computing resources

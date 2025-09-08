@@ -9,72 +9,33 @@ By the end of this week, students will be able to:
 
 ## Instructor-Led Session (2 hours)
 
-### Part 1: Amazon DynamoDB (45 minutes)
-- **NoSQL Database Concepts**
-  - Relational vs. NoSQL databases
-  - When to use DynamoDB vs. traditional databases
-- **DynamoDB Fundamentals**
-  - Tables, items, and attributes
-  - Primary keys (partition key and sort key)
-  - Global Secondary Indexes (GSI)
-- **Hands-on Demo**
-  - Create student records table
-  - Insert and query data
-  - Set up GSI for different query patterns
+### Part 1: DynamoDB (30 minutes)
+- **NoSQL database fundamentals**
+- **Tables, items, and attributes**
+- **Primary keys and indexing**
 
-### Part 2: Amazon Bedrock (45 minutes)
-- **Foundation Models Overview**
-  - What are Large Language Models (LLMs)?
-  - Available models in Bedrock (Claude, Llama, etc.)
-  - Use cases: text generation, summarization, Q&A
-- **Bedrock Components**
-  - Model access and pricing
-  - Knowledge Bases for custom data
-  - Agents for complex workflows
-- **Hands-on Demo**
-  - Access Bedrock in console
-  - Test text generation with different models
-  - Create simple Knowledge Base
+### Part 2: Q Business (30 minutes)
+- **Enterprise AI assistant overview**
+- **Integration with organizational data**
+- **Natural language queries**
 
-### Part 3: Amazon Q Business (30 minutes)
-- **Enterprise AI Assistant**
-  - Q Business vs. Q Developer
-  - Integration with organizational data
-  - Security and access controls
-- **Key Features**
-  - Document upload and indexing
-  - Natural language queries
-  - Conversation history and context
-- **Hands-on Demo**
-  - Set up Q Business application
-  - Upload sample documents
-  - Test conversational queries
+### Break (10 minutes)
 
-## Self-Paced Learning (2-3 hours)
+### Part 3: Bedrock (30 minutes)
+- **Foundation models overview**
+- **Available models and use cases**
+- **Knowledge bases and agents**
+
+### Part 4: Assignment Review (20 minutes)
+- **Review self-paced learning assignment**
+- **Q&A**
+
+## Self-Paced Learning
 
 ### Required Labs
-1. **DynamoDB Data Modeling Lab** (60 minutes)
-   - Design table for student flag system
-   - Create table with appropriate keys
-   - Insert sample data and test queries
-   - Practice different query patterns
-
-2. **Bedrock AI Integration Lab** (75 minutes)
-   - Create Lambda function that calls Bedrock
-   - Test different prompts and models
-   - Build simple Q&A system
-   - Handle API responses and errors
-
-3. **Q Business Setup Lab** (45 minutes)
-   - Create Q Business application
-   - Upload SEAL Lab documentation
-   - Test knowledge retrieval
-   - Explore conversation features
-
-### Reading/Videos
-- DynamoDB Developer Guide (Core Components)
-- Bedrock User Guide (Getting Started)
-- Q Business Administrator Guide (Setup)
+- **Explore the DynamoDB Console:** https://catalog.workshops.aws/dynamodb-labs/en-US/hands-on-labs/explore-console 
+- **Gen AI in Action - Customer AI Agent:** https://catalog.us-east-1.prod.workshops.aws/workshops/373a8112-5432-4d40-bff9-bafcb3203d58/en-US/40-customer-ai-agent 
+- **Skillbuilder - Q Business Getting Started:** https://skillbuilder.aws/learn/XDC51QHE4W/amazon-q-business-getting-started/GTNUVSWBJ2
 
 ## Integration Examples
 
