@@ -30,6 +30,7 @@ By the end of this week, students will be able to:
 ## Self-Paced Learning (90-120 minutes)
 
 ### Reading/Videos
+- **What is cloud computing? (video)** https://aws.amazon.com/awstv/watch/d33fa5c7646/ 
 - **What is cloud computing?** https://aws.amazon.com/what-is-cloud-computing/
 - **Cloud Computing:** https://www.gartner.com/en/infrastructure-and-it-operations-leaders/topics/cloud-computing 
 - **Skillbuilder - Cloud Essentials for Business Leaders:** https://skillbuilder.aws/learn/TD9MJF2BJP/cloud-essentials-for-business-leaders--education/2HBPQWSFJX
@@ -37,6 +38,6 @@ By the end of this week, students will be able to:
 
 ## Key Takeaways
 - Cloud computing provides on-demand access to computing resources
-- AWS offers 200+ services across multiple categories
+- AWS offers 250+ services across multiple categories
 - The AWS Free Tier allows hands-on learning without cost concerns
 - Proper account security and cost monitoring are essential from day one
