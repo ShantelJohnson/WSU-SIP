@@ -39,10 +39,15 @@ By the end of this week, students will be able to:
 ## Self-Paced Learning
 
 ### Required Labs
+**Temporary Account Access:** https://catalog.us-east-1.prod.workshops.aws/join?access-code=7990-045c17-0c
 - **S3 Hands-On Lab:** https://catalog.workshops.aws/general-immersionday/en-US/basic-modules/60-s3/s3 
 - **IAM Roles:** https://catalog.workshops.aws/iam-immersionday/en-US/basic-modules/20-identities-and-access-management/3-roles 
-  - **Including Optional IAM Service Roles:** https://catalog.workshops.aws/iam-immersionday/en-US/basic-modules/20-identities-and-access-management/3-roles/2-sr-lab 
+  - **Including 'Optional IAM Service Roles':** https://catalog.workshops.aws/iam-immersionday/en-US/basic-modules/20-identities-and-access-management/3-roles/2-sr-lab 
 - **Skillbuilder - AWS Lambda Getting Started:** https://skillbuilder.aws/learn/S6YE1Z74TX/aws-lambda-getting-started/D5XQ4GCZXR
+- **Optional Content:**
+  - Serverless 101 - AWS Lambda (video): https://youtu.be/GEABePyhFPA
+  - Getting Started with Amazon S3 (video): https://youtu.be/FZCZbPEMlXk 
+
 
 ## Integration Example
 **Simple File Processing Pipeline:**
