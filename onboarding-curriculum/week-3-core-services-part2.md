@@ -39,6 +39,7 @@ By the end of this week, students will be able to:
 - **Optional Content:**
   - **DynamoDB Core Concepts (video):** https://www.youtube.com/watch?v=Mw8wCj0gkRc
   - **Amazon Bedrock Agents (video):** https://www.youtube.com/watch?v=JkDzZFTXeSw
+  - **Responsible AI:** https://aws.amazon.com/ai/responsible-ai/
 
 ## Integration Examples
 
