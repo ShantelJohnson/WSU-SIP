@@ -34,7 +34,7 @@ By the end of this week, students will be able to:
 
 ### Required Labs
 - **To-Do List Chatbot (Hands-on Workshop):** https://catalog.workshops.aws/dynamodb-labs/en-US/hands-on-labs/explore-console
- - Access Link: https://catalog.us-east-1.prod.workshops.aws/join?access-code=a8e0-0f1dad-d5 
+  - Access Link: https://catalog.us-east-1.prod.workshops.aws/join?access-code=a8e0-0f1dad-d5 
 - **Skillbuilder - Q Business Getting Started:** https://skillbuilder.aws/learn/XDC51QHE4W/amazon-q-business-getting-started/GTNUVSWBJ2
 - **DynamoDB Core Concepts (optional video):** https://www.youtube.com/watch?v=Mw8wCj0gkRc
 
