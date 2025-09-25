@@ -15,14 +15,14 @@ By the end of this week, students will be able to:
 - **AI coding assistant capabilities**
 - **Integration with IDEs and AWS Console**
 
-### Part 2: Prompt Engineering for Code (30 minutes)
+### Part 2: (Amazon Bedrock) Prompt Engineering for Code (30 minutes)
 - **Effective prompt structure**
 - **AWS-specific prompting techniques**
 - **Iterative prompt refinement**
 
 ### Break (10 minutes)
 
-### Part 3: Q Developer Setup & Exploration (40 minutes)
+### Part 4: Talk about the addition of week 5 (40 minutes)
 - **Installation and configuration**
 - **Authentication setup**
 - **Hands-on exploration of capabilities**
