@@ -37,7 +37,7 @@ Learning Objectives
 
 **Resources:**
 -	[Challenge Instructions](https://github.com/ShantelJohnson/WSU-SIP/blob/main/onboarding-curriculum/week-4-files/challenge-instructions.md)
--	[S3MetadataProcessor](https://github.com/ShantelJohnson/WSU-SIP/blob/main/onboarding-curriculum/week-4-files/S3MetadataProcessor) (code for Lambda function)
+-	[S3MetadataProcessor.py](https://github.com/ShantelJohnson/WSU-SIP/blob/main/onboarding-curriculum/week-4-files/S3MetadataProcessor.py) (code for Lambda function)
 -	[test-file.txt](https://github.com/ShantelJohnson/WSU-SIP/blob/main/onboarding-curriculum/week-4-files/test-file.txt) (sample file for S3)
 -	Prompt Engineering with Anthropic's Claude 3.X: https://catalog.workshops.aws/prompt-eng-claude3/en-US
     -	Access link: (link)
