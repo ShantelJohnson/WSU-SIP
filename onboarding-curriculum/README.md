@@ -1,4 +1,4 @@
-# 4-Week AWS Student Onboarding Curriculum
+# 5-Week AWS Student Onboarding Curriculum
 ## Wayne State University - Student Innovation Program
 
 ### Program Overview
