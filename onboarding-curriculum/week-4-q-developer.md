@@ -40,4 +40,4 @@ Learning Objectives
 -	[S3MetadataProcessor.py](https://github.com/ShantelJohnson/WSU-SIP/blob/main/onboarding-curriculum/week-4-files/S3MetadataProcessor.py) (code for Lambda function)
 -	[test-file.txt](https://github.com/ShantelJohnson/WSU-SIP/blob/main/onboarding-curriculum/week-4-files/test-file.txt) (sample file for S3)
 -	Prompt Engineering with Anthropic's Claude 3.X: https://catalog.workshops.aws/prompt-eng-claude3/en-US
-    -	Access link: (link)
+    -	Access link: https://catalog.us-east-1.prod.workshops.aws/join?access-code=0d93-00b2dc-14
