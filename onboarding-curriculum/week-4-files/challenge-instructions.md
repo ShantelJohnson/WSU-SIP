@@ -111,7 +111,7 @@ If you find yourself spending more than 15-20 minutes stuck on a single step:
   - [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
   - [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
   - [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
-  - [Amazon CloudWatch] (https://docs.aws.amazon.com/lambda/latest/dg/python-logging.html#python-logging-cwconsole)
+  - [Amazon CloudWatch](https://docs.aws.amazon.com/lambda/latest/dg/python-logging.html#python-logging-cwconsole)
 
 - Ask for guidance
 
