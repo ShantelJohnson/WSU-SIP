@@ -111,6 +111,8 @@ If you find yourself spending more than 15-20 minutes stuck on a single step:
   - [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
   - [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
   - [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+  - [Amazon CloudWatch] (https://docs.aws.amazon.com/lambda/latest/dg/python-logging.html#python-logging-cwconsole)
+
 - Ask for guidance
 
 **Note on [TODO] Sections:** Some parts of this guide are intentionally marked as [TODO]. Use these as opportunities to practice researching with Q Developer or the AWS documentation. For example, you could ask Q Developer: "What are the steps to create an S3 bucket in AWS?"
