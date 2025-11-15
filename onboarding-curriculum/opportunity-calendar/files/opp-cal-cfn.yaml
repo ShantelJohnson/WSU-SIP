@@ -1,0 +1,236 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'REST API Gateway with DynamoDB integration for opp-calendar-table'
+
+Parameters:
+  DynamoDBTableName:
+    Type: String
+    Default: 'opp-calendar-table'
+    Description: 'Name of the existing DynamoDB table'
+
+Resources:
+  # IAM Role for API Gateway to access DynamoDB
+  APIGatewayDynamoDBRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: apigateway.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: DynamoDBAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:Scan
+                  - dynamodb:GetItem
+                Resource: !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${DynamoDBTableName}'
+
+  # REST API
+  CalendarAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: 'Calendar Events API'
+      Description: 'REST API for managing calendar events in DynamoDB'
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+
+  # Events Resource
+  EventsResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      RestApiId: !Ref CalendarAPI
+      ParentId: !GetAtt CalendarAPI.RootResourceId
+      PathPart: 'events'
+
+  # GET Method - Get all events
+  GetEventsMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref CalendarAPI
+      ResourceId: !Ref EventsResource
+      HttpMethod: GET
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS
+        IntegrationHttpMethod: POST
+        Uri: !Sub 'arn:aws:apigateway:${AWS::Region}:dynamodb:action/Scan'
+        Credentials: !GetAtt APIGatewayDynamoDBRole.Arn
+        RequestTemplates:
+          application/json: !Sub |
+            {
+              "TableName": "${DynamoDBTableName}"
+            }
+        IntegrationResponses:
+          - StatusCode: '200'
+            ResponseTemplates:
+              application/json: |
+                {
+                  "events": [
+                    #foreach($item in $input.path('$.Items'))
+                    {
+                      "EventID": "$item.EventID.S",
+                      "Campus": "$item.Campus.S",
+                      "StartDateTime": "$item.StartDateTime.S",
+                      "Description": "$item.Description.S",
+                      "EventName": "$item.EventName.S",
+                      "EventType": "$item.EventType.S",
+                      "Location": "$item.Location.S",
+                      "Organizer": "$item.Organizer.S",
+                      "Time": "$item.Time.S"
+                    }#if($foreach.hasNext),#end
+                    #end
+                  ]
+                }
+          - StatusCode: '500'
+            SelectionPattern: '5\d{2}'
+            ResponseTemplates:
+              application/json: |
+                {
+                  "error": "Internal server error"
+                }
+      MethodResponses:
+        - StatusCode: '200'
+          ResponseModels:
+            application/json: Empty
+        - StatusCode: '500'
+          ResponseModels:
+            application/json: Empty
+
+  # POST Method - Create new event
+  PostEventMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref CalendarAPI
+      ResourceId: !Ref EventsResource
+      HttpMethod: POST
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS
+        IntegrationHttpMethod: POST
+        Uri: !Sub 'arn:aws:apigateway:${AWS::Region}:dynamodb:action/PutItem'
+        Credentials: !GetAtt APIGatewayDynamoDBRole.Arn
+        RequestTemplates:
+          application/json: !Sub |
+            {
+              "TableName": "${DynamoDBTableName}",
+              "Item": {
+                "EventID": {
+                  "S": "$input.path('$.EventID')"
+                },
+                "Campus": {
+                  "S": "$input.path('$.Campus')"
+                },
+                "StartDateTime": {
+                  "S": "$input.path('$.StartDateTime')"
+                },
+                "Description": {
+                  "S": "$input.path('$.Description')"
+                },
+                "EventName": {
+                  "S": "$input.path('$.EventName')"
+                },
+                "EventType": {
+                  "S": "$input.path('$.EventType')"
+                },
+                "Location": {
+                  "S": "$input.path('$.Location')"
+                },
+                "Organizer": {
+                  "S": "$input.path('$.Organizer')"
+                },
+                "Time": {
+                  "S": "$input.path('$.Time')"
+                }
+              }
+            }
+        IntegrationResponses:
+          - StatusCode: '201'
+            ResponseTemplates:
+              application/json: |
+                {
+                  "message": "Event created successfully",
+                  "EventID": "$input.path('$.EventID')"
+                }
+          - StatusCode: '400'
+            SelectionPattern: '4\d{2}'
+            ResponseTemplates:
+              application/json: |
+                {
+                  "error": "Bad request - invalid input"
+                }
+          - StatusCode: '500'
+            SelectionPattern: '5\d{2}'
+            ResponseTemplates:
+              application/json: |
+                {
+                  "error": "Internal server error"
+                }
+      MethodResponses:
+        - StatusCode: '201'
+          ResponseModels:
+            application/json: Empty
+        - StatusCode: '400'
+          ResponseModels:
+            application/json: Empty
+        - StatusCode: '500'
+          ResponseModels:
+            application/json: Empty
+
+  # API Deployment
+  APIDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - GetEventsMethod
+      - PostEventMethod
+    Properties:
+      RestApiId: !Ref CalendarAPI
+
+  # API Stage
+  APIStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      RestApiId: !Ref CalendarAPI
+      DeploymentId: !Ref APIDeployment
+      StageName: 'prod'
+      Description: 'Production stage for Calendar Events API'
+
+  # Usage Plan for Bedrock Agent compatibility
+  APIUsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+    Properties:
+      UsagePlanName: 'CalendarAPIUsagePlan'
+      Description: 'Usage plan for Calendar Events API'
+      ApiStages:
+        - ApiId: !Ref CalendarAPI
+          Stage: !Ref APIStage
+      Throttle:
+        RateLimit: 100
+        BurstLimit: 200
+
+Outputs:
+  APIEndpoint:
+    Description: 'API Gateway endpoint URL'
+    Value: !Sub 'https://${CalendarAPI}.execute-api.${AWS::Region}.amazonaws.com/prod'
+    Export:
+      Name: !Sub '${AWS::StackName}-APIEndpoint'
+
+  APIId:
+    Description: 'API Gateway ID'
+    Value: !Ref CalendarAPI
+    Export:
+      Name: !Sub '${AWS::StackName}-APIId'
+
+  GetEventsEndpoint:
+    Description: 'GET endpoint for retrieving all events'
+    Value: !Sub 'https://${CalendarAPI}.execute-api.${AWS::Region}.amazonaws.com/prod/events'
+
+  PostEventsEndpoint:
+    Description: 'POST endpoint for creating new events'
+    Value: !Sub 'https://${CalendarAPI}.execute-api.${AWS::Region}.amazonaws.com/prod/events'
