@@ -1,0 +1,151 @@
+openapi: 3.0.1
+info:
+  title: Calendar Events API
+  description: API for managing calendar events in DynamoDB
+  version: 1.0.0
+servers:
+  - url: https://YOUR_API_GATEWAY_ID.execute-api.YOUR_REGION.amazonaws.com/YOUR_STAGE
+    description: Production server
+paths:
+  /events:
+    get:
+      operationId: GET_GetAllEvents_ListEvents
+      summary: Get all calendar events
+      description: Retrieves all calendar events from the database
+      responses:
+        '200':
+          description: Successfully retrieved all events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CalendarEvent'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: POST_CreateEvent_AddEvent
+      summary: Create a new calendar event
+      description: Creates a new calendar event with the provided details. EventID is required, all other fields are optional.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEventRequest'
+      responses:
+        '201':
+          description: Event created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEventResponse'
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    CalendarEvent:
+      type: object
+      properties:
+        EventID:
+          type: string
+          description: Unique identifier for the event
+        Campus:
+          type: string
+          description: Campus where the event takes place
+        StartDateTime:
+          type: string
+          description: Start date and time of the event
+        Description:
+          type: string
+          description: Detailed description of the event
+        EventName:
+          type: string
+          description: Name of the event
+        EventType:
+          type: string
+          description: Type or category of the event
+        Location:
+          type: string
+          description: Physical location of the event
+        Organizer:
+          type: string
+          description: Person or organization organizing the event
+        Time:
+          type: string
+          description: Time of the event
+      required:
+        - EventID
+    
+    CreateEventRequest:
+      type: object
+      properties:
+        EventID:
+          type: string
+          description: Unique identifier for the event (required)
+        Campus:
+          type: string
+          description: Campus where the event takes place (optional)
+        StartDateTime:
+          type: string
+          description: Start date and time of the event (optional)
+        Description:
+          type: string
+          description: Detailed description of the event (optional)
+        EventName:
+          type: string
+          description: Name of the event (optional)
+        EventType:
+          type: string
+          description: Type or category of the event (optional)
+        Location:
+          type: string
+          description: Physical location of the event (optional)
+        Organizer:
+          type: string
+          description: Person or organization organizing the event (optional)
+        Time:
+          type: string
+          description: Time of the event (optional)
+      required:
+        - EventID
+    
+    CreateEventResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Success message
+        EventID:
+          type: string
+          description: ID of the created event
+        eventData:
+          $ref: '#/components/schemas/CalendarEvent'
+    
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        success:
+          type: boolean
+          description: Indicates if the operation was successful
