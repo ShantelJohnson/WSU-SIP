@@ -1,0 +1,114 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'REST API Gateway for Campus Chatbot Lambda Function with CORS'
+
+Parameters:
+  LambdaFunctionName:
+    Type: String
+    Default: ' '
+    Description: 'Name of the existing Lambda function'
+
+  ApiStageName:
+    Type: String
+    Default: 'prod'
+    Description: 'API Gateway stage name'
+
+  ApiName:
+    Type: String
+    Default: 'campus-chatbot-api'
+    Description: 'Name for the API Gateway'
+
+Resources:
+  # REST API Gateway
+  CampusChatbotApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: !Ref ApiName
+      Description: 'REST API for Campus Chatbot with CORS support'
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+
+  # Resource for /chat endpoint
+  ChatResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      RestApiId: !Ref CampusChatbotApi
+      ParentId: !GetAtt CampusChatbotApi.RootResourceId
+      PathPart: 'chat'
+
+  # POST method for /chat
+  ChatPostMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref CampusChatbotApi
+      ResourceId: !Ref ChatResource
+      HttpMethod: POST
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub 
+          - 'arn:aws:apigateway:\${AWS::Region}:lambda:path/2015-03-31/functions/\${LambdaArn}/invocations'
+          - LambdaArn: !Sub 'arn:aws:lambda:\${AWS::Region}:\${AWS::AccountId}:function:\${LambdaFunctionName}'
+
+  # OPTIONS method for CORS preflight requests
+  ChatOptionsMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref CampusChatbotApi
+      ResourceId: !Ref ChatResource
+      HttpMethod: OPTIONS
+      AuthorizationType: NONE
+      Integration:
+        Type: MOCK
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Requested-With'"
+              method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS'"
+              method.response.header.Access-Control-Max-Age: "'86400'"
+            ResponseTemplates:
+              application/json: ''
+        PassthroughBehavior: WHEN_NO_MATCH
+        RequestTemplates:
+          application/json: '{"statusCode": 200}'
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: false
+            method.response.header.Access-Control-Allow-Headers: false
+            method.response.header.Access-Control-Allow-Methods: false
+            method.response.header.Access-Control-Max-Age: false
+
+  # Lambda permission for API Gateway
+  LambdaApiGatewayPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref LambdaFunctionName
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:\${AWS::Region}:\${AWS::AccountId}:\${CampusChatbotApi}/*/*'
+
+  # API Gateway deployment
+  ApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - ChatPostMethod
+      - ChatOptionsMethod
+    Properties:
+      RestApiId: !Ref CampusChatbotApi
+      StageName: !Ref ApiStageName
+
+Outputs:
+  ApiGatewayUrl:
+    Description: 'API Gateway endpoint URL for frontend integration'
+    Value: !Sub 'https://\${CampusChatbotApi}.execute-api.\${AWS::Region}.amazonaws.com/\${ApiStageName}/chat'
+    Export:
+      Name: !Sub '\${AWS::StackName}-ApiUrl'
+
+  ApiGatewayId:
+    Description: 'API Gateway ID'
+    Value: !Ref CampusChatbotApi
+    Export:
+      Name: !Sub '\${AWS::StackName}-ApiId'
