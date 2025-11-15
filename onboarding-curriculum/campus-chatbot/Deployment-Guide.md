@@ -8,7 +8,10 @@ This guide will help you set up and deploy the backend, knowledge base synchroni
 
 ### 1. Replace Lambda Function Code
 
-- ⚠️ **Critical Step**: Ensure the model ARN is correct and uses the inference profile ID for Nova Pro.
+- ⚠️ **Critical Steps**:
+   - Ensure the KNOWLEDGE_BASE_ID is correct (this information can be found in the Amazon Bedrock Console --> Build --> Knowledge Bases).
+   - Ensure the model ARN is correct and uses the inference profile ID for Nova Pro (Amazon Bedrock Console --> Infer --> Cross-region Inference).
+
 
 ### 2. Confirm IAM Permissions
 
