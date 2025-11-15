@@ -1,0 +1,106 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create an EventBridge rule that triggers a Lambda function daily to refresh a knowledge base.
+
+Parameters:
+  KnowledgeBaseId:
+    Type: String
+    Description: The ID of the knowledge base to refresh.
+  DataSourceId:
+    Type: String
+    Description: The ID of the data source for the knowledge base.
+  RefreshHour:
+    Type: Number
+    Description: The hour (0-23) in UTC to trigger the refresh daily.
+    MinValue: 0
+    MaxValue: 23
+    Default: 3
+
+Resources:
+  RefreshKnowledgeBaseLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: RefreshKnowledgeBaseFunction
+      Runtime: python3.8
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          import json
+          import boto3
+          import logging
+          from botocore.exceptions import ClientError
+
+          # Configure logging
+          logger = logging.getLogger()
+          logger.setLevel(logging.INFO)
+
+          # Initialize Bedrock client
+          bedrock_agent_client = boto3.client('bedrock-agent')
+
+          def handler(event, context):
+              knowledge_base_id = event['knowledge_base_id']
+
+              try:
+                  # Log event details
+                  logger.info(f"Received event: {json.dumps(event)}")
+
+                  # Start the knowledge base refresh
+                  response = bedrock_agent_client.start_ingestion_job(
+                      knowledgeBaseId=knowledge_base_id,
+                      dataSourceId=event['dataSourceId']
+                  )
+
+                  logger.info(f"Refresh started for knowledge base {knowledge_base_id}: {response}")
+
+              except ClientError as e:
+                  logger.error(f"Error refreshing knowledge base: {e}")
+                  raise
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaBasicExecution
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*
+              - Effect: Allow
+                Action:
+                  - bedrock:StartIngestionJob
+                Resource: !Sub arn:aws:bedrock:\${AWS::Region}:\${AWS::AccountId}:knowledge-base/\${KnowledgeBaseId}
+
+  EventBridgeRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Description: "Trigger Lambda function daily to refresh knowledge base"
+      ScheduleExpression: !Sub "cron(0 \${RefreshHour} * * ? *)"
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt RefreshKnowledgeBaseLambdaFunction.Arn
+          Id: "RefreshKnowledgeBase"
+          Input: !Sub |
+            {
+              "knowledge_base_id": "\${KnowledgeBaseId}",
+              "dataSourceId": "\${DataSourceId}"
+            }
+
+  LambdaPermissionForEventBridge:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref RefreshKnowledgeBaseLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt EventBridgeRule.Arn
